@@ -1,0 +1,15 @@
+This folder contains the GIT project repository
+
+Project Title: Clock Theory
+
+Objective of the Project: to study interrelations between sets of
+schedules determined by clock constraint specifications and safety
+properties in the context of clock model.
+
+Files of Project:
+
+1) README is this file
+
+2) llncs.cls is a class file for LNCS of Springer
+
+3) main.tex
