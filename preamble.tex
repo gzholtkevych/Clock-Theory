@@ -1,0 +1,15 @@
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+\usepackage{amssymb}
+%
+\spnewtheorem{assumption}{Modelling Assumption}{\bfseries}{\itshape}
+%
+\newcommand{\clocks}[1][]{%
+	\def\observ{o}\def\arg{#1}%
+	\ifx\observ\arg \mathcal{O}\else\mathcal{C}\ifx\\#1\\%
+	\else ^{(#1)}\fi\fi}
+\newcommand{\dELTA}{\boldsymbol{\delta}}
+\newcommand{\nat}[1][]{\mathbb{N}\ifx\\#1\\\else _{#1}\fi}
+\newcommand{\cfg}[1]{\boldsymbol{\chi}_{#1}}
+\newcommand{\pI}{\boldsymbol{\pi}}
+

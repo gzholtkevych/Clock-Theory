@@ -1,7 +1,9 @@
 \documentclass[11pt]{llncs}
 
+\input{preamble}
+
 \begin{document}
-\title{Clock Constraints and Safety Properties}
+\title{Specification of Safety Requirements for Event-Driven Systems}
 \author{To be added later}
 \institute{To be added later}
 \maketitle
@@ -9,6 +11,35 @@
 To be added later.
 \keywords{to $\cdot$ be $\cdot$ added $\cdot$ later}
 \end{abstract}
-\section{Introduction}
-
+%
+\include{introduction}
+%
+\include{model-assumptions}
+%
+\include{model-math}
+%
+\include{safety}
+%
+\include{ccsl}
+%
+\include{ccsl-expressive-power}
+%
+\include{conclusion}
+%
+\begin{thebibliography}{00}
+\bibitem{bib:lamport-1977}
+Lamport, L.:
+Proving the Correctness of Multiprocess Programs.
+TSE. 2, 125--143 (1977)
+\bibitem{bib:lamport-1978}
+Lamport, L.:
+Time, Clocks, and  the Ordering of Events in a  Distributed System.
+CACM. 7(21), 558--565 (1978)
+\bibitem{bib:zhang}
+Zhang, M., Mallet, F.:
+An Executable Semantics of Clock Constraint Specification Language and Its Applications.
+In: Artho, C., Olveczky, P.C.(eds.) FTSCS 2015. CCIS, vol. 596, pp. 37--51.
+Springer International Publishing, Switzerland (2016)
+\end{thebibliography}
+%
 \end{document}

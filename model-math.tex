@@ -1,0 +1,108 @@
+\section{Mathematical Models for Main Concepts}
+In this section we provide the mathematical formalism that allows to give rigorous definitions for the concepts introduced in the previous section.
+To do this we use the first-order logic, the theoretic-set formalism, and the technique that been developed in general topology.
+
+First of all, we assume that a finite set $\clocks$ of clocks is given and fixed.
+Following \cite{bib:zhang}, we define the universe of clocks in the next way:
+\begin{subequations}
+\begin{align}
+	&\clocks[0]   = \clocks\,,\\
+	&\begin{array}{lclcl}
+	\clocks[n+1] &=& \clocks[n] &\bigcup& \{a\$\mid a\in\clocks[n]\}\\
+		         & &            &\bigcup& \{(a+b)\mid a,b\in\clocks[n]\}\\
+		         & &            &\bigcup& \{(a\ast b)\mid a,b\in\clocks[n]\}\\
+		         & &            &\bigcup& \{(a\vee b)\mid a,b\in\clocks[n]\}\\
+		         & &            &\bigcup& \{(a\wedge b)\mid a,b\in\clocks[n]\}\,,
+	\end{array}\\
+	&\clocks[\infty] = \bigcup\limits_{n\geq 0}\clocks[n]\,.
+\end{align}
+\end{subequations}
+All members of $\clocks[\infty]$ are called clocks, but if members of $\clocks$ are called {\it\bfseries primary clocks} then members of $\clocks[\infty]\setminus\clocks$ are called {\it\bfseries derived} or {\it\bfseries secondary clocks}.
+Below we demonstrate that the behaviour of derived clocks is completely determined by the behaviour of primary clocks.
+
+Further, in accordance with MA--\ref{ma:1}\footnote{Here and below we use the abbreviation MA with number to refer to the corresponding Modelling Assumption.} we fix some finite subset $\clocks[o]$ of the set $\clocks[\infty]$ such that
+\begin{enumerate}
+\item
+$\clocks[o]\supset\clocks$ and
+\item
+for any $a,b\in\clocks[\infty]$
+\begin{enumerate}
+\item
+if $a\$\in\clocks[o]$ then $a\in\clocks[o]$\,;
+\item
+if $(a+b)\in\clocks[o]$ then $a,b\in\clocks[o]$\,;
+\item
+if $(a\ast b)\in\clocks[o]$ then $a,b\in\clocks[o]$\,;
+\item
+if $(a\vee b)\in\clocks[o]$ then $a,b\in\clocks[o]$\,;
+\item
+if $(a\wedge b)\in\clocks[o]$ then $a,b\in\clocks[o]$\,.
+\end{enumerate}
+\end{enumerate}
+Subsets of this kind we call below {\it\bfseries observation frames} over $\clocks$.
+\begin{definition}\label{def:schedule}
+Let $\clocks$ be a set of primary clocks and $\clocks[o]$ be some observation frame over $\clocks$ then a mapping $\dELTA\colon\nat\to 2^{\clocks[o]}$ is called a {\bfseries schedule} if
+\begin{enumerate}
+\item
+$\dELTA(t)\neq\varnothing$ for each $t\in\nat$\,;
+\item
+if $a\$\in\clocks[o]$ then
+\[
+	a\$\in\dELTA(t)\quad\mbox{iff}\quad\cfg{\dELTA}(a,t)>0\ \mbox{and}
+		\ a\in\dELTA(t)
+\]
+for each $t\in\nat$ where
+\begin{align*}
+	&\cfg{\dELTA}(c,0)=0\\
+	&\cfg{\dELTA}(c,t+1)=\cfg{\dELTA}(c,t)&\mbox{if}\ c\notin\dELTA(t)\\
+	&\cfg{\dELTA}(c,t+1)=\cfg{\dELTA}(c,t)+1\quad&\mbox{if}\ c\in\dELTA(t)
+\end{align*}
+for any $c\in\clocks[o]$\,;
+\item
+if $(a+b)\in\clocks[o]$ then
+\[
+	(a+b)\in\dELTA(t)\quad\mbox{iff}\quad a\in\dELTA(t)\ \mbox{or}\ b\in\dELTA(t)
+\]	
+for each $t\in\nat$\,;
+\item
+if $(a\ast b)\in\clocks[o]$ then
+\[
+	(a\ast b)\in\dELTA(t)\quad\mbox{iff}\quad a\in\dELTA(t)\ \mbox{and}
+		\ b\in\dELTA(t)
+\]
+for each $t\in\nat$\,;
+\item
+if $(a\vee b)\in\clocks[o]$ then
+\begin{multline*}
+	(a\vee b)\in\dELTA(t)\quad\mbox{iff}\\
+		\min(\cfg{\dELTA}(a,t),\cfg{\dELTA}(b,t))<
+		\min(\cfg{\dELTA}(a,t+1),\cfg{\dELTA}(b,t+1))
+\end{multline*}
+for each $t\in\nat$\,;
+\item
+if $(a\wedge b)\in\clocks[o]$ then
+\begin{multline*}
+	(a\wedge b)\in\dELTA(t)\quad\mbox{iff}\\
+		\max(\cfg{\dELTA}(a,t),\cfg{\dELTA}(b,t))<
+		\max(\cfg{\dELTA}(a,t+1),\cfg{\dELTA}(b,t+1))
+\end{multline*}
+for each $t\in\nat$\,.
+\end{enumerate}
+\end{definition}
+Thus, Def.~\ref{def:schedule} ensures the representation of MA--\ref{ma:2} -- MA--\ref{ma:4}:
+\begin{enumerate}
+\item
+each non-empty subset of $\clocks[o]$ represents a message, which notifies about that clocks identified with elements of this subset have ticked;
+\item
+the mapping $\dELTA$ enumerates messages. 
+\end{enumerate}
+The next fact is a simple exercise in mathematical induction.
+\begin{proposition}
+Let $\clocks$ be a set of primary clocks, $\clocks[o]$ be an observation frame over $\clocks$, and $\dELTA'$ and $\dELTA''$ be schedules such that $\dELTA'(t)\bigcap\clocks=\dELTA''(t)\bigcap\clocks$ for each $t\in\nat$ then $\dELTA'=\dELTA''$\,.
+\end{proposition}
+As before, $\clocks$ refers to a set of primary clocks, and $\clocks[o]$ denotes some observation frame over $\clocks$.
+\par\noindent
+We describe a procedure that constructs a schedule $\dELTA$ starting from a mapping $\pI\colon\nat\to 2^{\clocks}$ such that $\pI(t)\neq\varnothing$ for each $t\in\nat$.
+\begin{proposition}
+The constructed above schedule $\dELTA$ satisfies the equation $\dELTA(t)\bigcap\clocks=\pI(t)$ for any $t\in\nat$\,.
+\end{proposition}
