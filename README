@@ -12,4 +12,11 @@ Files of Project:
 
 2) llncs.cls is a class file for LNCS of Springer
 
-3) main.tex
+3) main.tex is the main tex-file
+
+4) introduction.tex contains introduction for the paper
+
+5) model-assumptions.tex contains the informal paper context
+
+6) model-math.tex contains the specification of mathematical model
+
